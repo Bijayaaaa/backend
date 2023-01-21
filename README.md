@@ -1,6 +1,6 @@
 
 ## To run
-node server.js
+`node server.js`
 
 
 # references: 
