@@ -44,7 +44,7 @@ app.post('/', (req, res) => {
   console.log('command: ',command);
   db.query(command);
   // res.send({'message':`Thanks for submitting, ${req.body.username}!`});
-  res.send(`User ${req.username} created successfully!`);
+  res.send(`User ${req.body.username} created successfully!`);
 });
 
 /*

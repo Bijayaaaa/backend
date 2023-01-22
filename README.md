@@ -61,8 +61,8 @@ requests.post('https://vertexhacks.aanandagiri.repl.co/', data).text
 # <nodejs code> : /truncate endpoint
 const axios = require('axios');
 
-const data = {}
-axios.post('https://vertexhacks.aanandagiri.repl.co/truncate', data).then(response => {
+const data = {to:'phone_number', message:'should work'}
+axios.post('https://vertexhacks.aanandagiri.repl.co/sms', data).then(response => {
         console.log(response.data);
     })    .catch(error => {
         console.log(error);
@@ -71,7 +71,8 @@ axios.post('https://vertexhacks.aanandagiri.repl.co/truncate', data).then(respon
 
 ```<python code> :  /sms endpoint
 import requests
-requests.post('https://vertexhacks.aanandagiri.repl.co/sms', {'to':'phone_number', 'message':'hi'}).text
+data = {'to':'phone_number', 'message':'hi'}
+requests.post('https://vertexhacks.aanandagiri.repl.co/sms', data).text
 
 ```
 
