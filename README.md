@@ -1,3 +1,37 @@
+## replit:
+https://replit.com/@AanandaGiri/vertexhacks#server.js
+https://vertexhacks.aanandagiri.repl.co/
+
+## Github
+https://github.com/team-hustler/backend
+connectionString in connection.js is address given by: `ngrok tcp 5432`
+
+## EndPoints:
+
+* GET https://vertexhacks.aanandagiri.repl.co
+* <localhost> GET   http://localhost:3000
+  - list of registered users
+
+* POST  https://vertexhacks.aanandagiri.repl.co
+* <localhost> POST  http://localhost:3000
+  - params: (username<str>, age<int>, email<str>, phone<str:10>, location<str>, contributions<str>, date<str>, duration<str>)
+  - To add new user
+
+* POST https://vertexhacks.aanandagiri.repl.co/sms
+* <localhost> POST http://localhost:3000/sms
+  - params: (messsage, to) 
+  - to send sms
+
+* POST https://vertexhacks.aanandagiri.repl.co/truncate
+* <Localhost> POST http://localhost:3000/truncate
+  - To truncate the database
+
+
+# To Do
+1. Replit
+2. Spaprrow SMS
+3. File Coin
+
 ## Installations
 npm init
 node -v & npm -v  # node and npm version
@@ -9,27 +43,6 @@ npm install dotenv
 
 ## To run
 `nodemon server.js`
-
-# replit:
-https://replit.com/@AanandaGiri/vertexhacks#server.js
-https://vertexhacks.aanandagiri.repl.co/
-
-connectionString in connection.js is address given by: `ngrok tcp 5432`
-
-## EndPoints:
-* GET   http://localhost:3000
-  - list of registered users
-
-* POST  http://localhost:3000
-  - params: (username<str>, age<int>, email<str>, phone<str:10>, location<str>, contributions<str>, date<str>, duration<str>)
-  - To add new user
-
-* POST http://localhost:3000/sms
-  - params: (messsage, to) 
-  - to send sms
-
-* POST http://localhost:3000/truncate
-  - To truncate the database
 
 # references: 
 * postgresql with node

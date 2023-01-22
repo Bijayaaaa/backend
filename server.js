@@ -39,6 +39,16 @@ app.post('/', cors(), function(req, res) {
   res.send({'message':`Thanks for submitting, ${req.body.username}!`});
 });
 
+/*
+
+// <python code> Test create new uesr
+import requests
+data = {'username': 'neumon', 'age': 116, 'email': 'neumon@neumon.neumon', 'phone': '0100000000', 'location': 'DC', 'contributions': 'computer, economics, physics', 'date': '2023/02/16', 'duration': '48 hours'}
+print(data)
+requests.post('http://localhost:3000/', data).text
+
+*/
+
 
 app.post('/truncate', cors(), function(req, res) {
   //   request = JSON.parse(req.body)
@@ -53,61 +63,28 @@ app.post('/truncate', cors(), function(req, res) {
 
   app.post('/sms', cors(), function(req, res) {
     //   request = JSON.parse(req.body)
-      // console.log(req.body);
-      // console.log(`messege:  ${req.body.message}, to: ${req.body.to}`)
+      console.log(req.body);
+      console.log(`messege:  ${req.body.message}, to: ${req.body.to}`)
       function send_sms(message,to){
-        // Try: method1
-        axios({
-          method: 'post',
-          url: '',
-          data: {
-              'token' : 'v2_joU8zjr0iUPyzagTsh3V7LJRpr3.5mtq',
-              'from' : 'TheAlert',
-              'to' : to,
-              'text' : message
-          }
-      });
-        // Try: method2
-        // axios.post('http://api.sparrowsms.com/v2/sms/', {'token' : 'v2_joU8zjr0iUPyzagTsh3V7LJRpr3.5mtq',
-        //     'from' : 'TheAlert',
-        //     'to' : to,
-        //     'text' : message}
-        // ).then(function(response){console.log(response);})
-        // .catch(function(error){console.log(error);})
+        axios.post('http://api.sparrowsms.com/v2/sms/', {'token' : 'v2_joU8zjr0iUPyzagTsh3V7LJRpr3.5mtq',
+            'from' : 'TheAlert',
+            'to' : to,
+            'text' : message}
+        ).then(function(response){console.log(response);})
+        .catch(function(error){console.log(error);})
 
       }
       send_sms(req.body.message, req.body.to)
-      // let body = req.body;
-      // saving data to database   
-      // let command = "TRUNCATE TABLE volunteers";
-      // db.query(command);
       res.send({'message':`messege sent!`});
     });
 /*
+// <python code> : Test /sms endpoint
 import requests
-requests.post('http://localhost:3000/sms', {'messege':'hello world', 'to': '9840445934,9861280130'}).text
+requests.post('http://localhost:3000/sms', {'to':'9840445934', 'message':'hi'}).text
+
 
 */
+
 app.listen(3000, function() {
   console.log('Server started on http://localhost:3000');
 });
-
-// posting data
-// python3 code
-/*
-
-import requests
-requests.post('http://localhost:3000', {'name':'anon'})
-cols=('username', 'age', 'email', 'phone', 'location', 'contributions', 'date', 'duration')
-values=('neumon', 116, 'neumon@neumon.neumon', '0100000000','DC', 'computer, economics, physics', '2023/02/16', '48 hours')
-
-data = {}
-for c, v in zip(cols, values):
-    data[c] = v
-
-print(data)
-requests.post('http://localhost:3000/', data).text
-
-
-
-*/
