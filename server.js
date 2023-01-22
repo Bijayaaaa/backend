@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { request } = require('express');
 const db = require("./connection");
+let axios = require('axios');
 
 const cors = require('cors');
 const app = express();
@@ -27,8 +28,9 @@ app.get('/', cors(), function(req, res) {
 
 app.post('/', cors(), function(req, res) {
 //   request = JSON.parse(req.body)
-  console.log(req.body);
-  console.log(`received:  ${req.body.username}`)
+  console.log(`body: ${req.body}`);
+  console.log(`received username:  ${req.body.username}`)
+  // console.log(`received data.username:  ${req.body.data.username}`)
   let body = req.body;
   // saving data to database   
   let command = `INSERT INTO volunteers(username, age, email, phone, location, contributions, date, duration) VALUES('${body.username}', ${parseInt(body.age)}, '${body.email}', '${body.phone}', '${body.location}', '${body.contributions}', '${body.date}', '${ body.duration}')`;
@@ -38,7 +40,7 @@ app.post('/', cors(), function(req, res) {
 });
 
 
-app.post('/del', cors(), function(req, res) {
+app.post('/truncate', cors(), function(req, res) {
   //   request = JSON.parse(req.body)
     console.log(req.body);
     console.log(`received:  ${req.body.username}`)
@@ -49,6 +51,43 @@ app.post('/del', cors(), function(req, res) {
     res.send({'message':`Thanks for deleting all!`});
   });
 
+  app.post('/sms', cors(), function(req, res) {
+    //   request = JSON.parse(req.body)
+      // console.log(req.body);
+      // console.log(`messege:  ${req.body.message}, to: ${req.body.to}`)
+      function send_sms(message,to){
+        // Try: method1
+        axios({
+          method: 'post',
+          url: '',
+          data: {
+              'token' : 'v2_joU8zjr0iUPyzagTsh3V7LJRpr3.5mtq',
+              'from' : 'TheAlert',
+              'to' : to,
+              'text' : message
+          }
+      });
+        // Try: method2
+        // axios.post('http://api.sparrowsms.com/v2/sms/', {'token' : 'v2_joU8zjr0iUPyzagTsh3V7LJRpr3.5mtq',
+        //     'from' : 'TheAlert',
+        //     'to' : to,
+        //     'text' : message}
+        // ).then(function(response){console.log(response);})
+        // .catch(function(error){console.log(error);})
+
+      }
+      send_sms(req.body.message, req.body.to)
+      // let body = req.body;
+      // saving data to database   
+      // let command = "TRUNCATE TABLE volunteers";
+      // db.query(command);
+      res.send({'message':`messege sent!`});
+    });
+/*
+import requests
+requests.post('http://localhost:3000/sms', {'messege':'hello world', 'to': '9840445934,9861280130'}).text
+
+*/
 app.listen(3000, function() {
   console.log('Server started on http://localhost:3000');
 });
@@ -68,5 +107,7 @@ for c, v in zip(cols, values):
 
 print(data)
 requests.post('http://localhost:3000/', data).text
+
+
 
 */

@@ -1,11 +1,35 @@
-
-1. Replit
-2. Spaprrow SMS
-3. file coin
+## Installations
+npm init
+node -v & npm -v  # node and npm version
+npm install passport-local  #login
+npm install pg              # Connect to postgresql
+npm install express         # for webserver
+npm install cors            # API permissions
+npm install dotenv
 
 ## To run
-`node server.js`
+`nodemon server.js`
 
+# replit:
+https://replit.com/@AanandaGiri/vertexhacks#server.js
+https://vertexhacks.aanandagiri.repl.co/
+
+connectionString in connection.js is address given by: `ngrok tcp 5432`
+
+## EndPoints:
+* GET   http://localhost:3000
+  - list of registered users
+
+* POST  http://localhost:3000
+  - params: (username<str>, age<int>, email<str>, phone<str:10>, location<str>, contributions<str>, date<str>, duration<str>)
+  - To add new user
+
+* POST http://localhost:3000/sms
+  - params: (messsage, to) 
+  - to send sms
+
+* POST http://localhost:3000/truncate
+  - To truncate the database
 
 # references: 
 * postgresql with node
@@ -16,7 +40,6 @@ https://medium.com/analytics-vidhya/very-simple-rest-api-using-express-js-5e4ebf
 
 * cors:
 https://stackabuse.com/handling-cors-with-node-js/
-npm install express cors
 
 
 
@@ -66,3 +89,15 @@ psql volunteer
 
 \dt
 <!-- verify database created -->
+
+## locally host postgresql db
+ngrok tcp 5432
+
+# 
+psql -U postgres -h localhost -p 5432 postgres
+
+# 
+ngrok tcp 5432
+
+# Connecting to PostgreSQL
+psql -h 0.tcp.ngrok.io -p 17618 -U postgres -d postgres
