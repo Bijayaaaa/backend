@@ -20,12 +20,12 @@ app.get('/', cors(), function(req, res) {
     // console.log("users: ",users)
     console.log('ping: http://localhost:3000')
 
-    res.send({'users': JSON.stringify(users), 'note':'To add new user please post to: http://localhost:3000/newVolunteer with data format similar to users listed above'});
+    res.send({'users': JSON.stringify(users), 'note':'To add new user please post to: http://localhost:3000/ with data format similar to users listed above'});
   }
   users = data()
 });
 
-app.post('/newVolunteer', cors(), function(req, res) {
+app.post('/', cors(), function(req, res) {
 //   request = JSON.parse(req.body)
   console.log(req.body);
   console.log(`received:  ${req.body.username}`)
@@ -36,6 +36,18 @@ app.post('/newVolunteer', cors(), function(req, res) {
   db.query(command);
   res.send({'message':`Thanks for submitting, ${req.body.username}!`});
 });
+
+
+app.post('/del', cors(), function(req, res) {
+  //   request = JSON.parse(req.body)
+    console.log(req.body);
+    console.log(`received:  ${req.body.username}`)
+    let body = req.body;
+    // saving data to database   
+    let command = "TRUNCATE TABLE volunteers";
+    db.query(command);
+    res.send({'message':`Thanks for deleting all!`});
+  });
 
 app.listen(3000, function() {
   console.log('Server started on http://localhost:3000');
@@ -55,6 +67,6 @@ for c, v in zip(cols, values):
     data[c] = v
 
 print(data)
-requests.post('http://localhost:3000/newVolunteer', data).text
+requests.post('http://localhost:3000/', data).text
 
 */
