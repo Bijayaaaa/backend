@@ -21,6 +21,29 @@ connectionString in connection.js is address given by: `ngrok tcp 5432`
   
 
 ```
+// <nodejs code> : create new uesr
+const axios = require('axios');
+
+const data = {
+    username: 'ritik',
+    age: 116,
+    email: 'neumon@neumon.neumon',
+    phone: '0100000000',
+    location: 'DC',
+    contributions: 'computer, economics, physics',
+    date: '2023/02/16',
+    duration: '48 hours'
+};
+console.log(data);
+
+axios.post('https://vertexhacks.aanandagiri.repl.co/', data).then(response => {
+        console.log(response.data);
+    })    .catch(error => {
+        console.log(error);
+    });
+```
+
+```
 # <python code> Test create new uesr
 import requests
 data = {'username': 'ritik', 'age': 116, 'email': 'neumon@neumon.neumon', 'phone': '0100000000', 'location': 'DC', 'contributions': 'computer, economics, physics', 'date': '2023/02/16', 'duration': '48 hours'}
@@ -33,9 +56,22 @@ requests.post('https://vertexhacks.aanandagiri.repl.co/', data).text
   - params: (messsage, to) 
   - to send sms<br>
 - Example:
+
+```
+# <nodejs code> : /truncate endpoint
+const axios = require('axios');
+
+const data = {}
+axios.post('https://vertexhacks.aanandagiri.repl.co/truncate', data).then(response => {
+        console.log(response.data);
+    })    .catch(error => {
+        console.log(error);
+    });
+```
+
 ```<python code> :  /sms endpoint
 import requests
-requests.post('https://vertexhacks.aanandagiri.repl.co/sms', {'to':'9840445934', 'message':'hi'}).text
+requests.post('https://vertexhacks.aanandagiri.repl.co/sms', {'to':'phone_number', 'message':'hi'}).text
 
 ```
 
