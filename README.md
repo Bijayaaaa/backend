@@ -9,16 +9,18 @@ connectionString in connection.js is address given by: `ngrok tcp 5432`
 ## EndPoints:
 
 * GET https://vertexhacks.aanandagiri.repl.co
-* <localhost> GET   http://localhost:3000
+* (localhost) GET   http://localhost:3000
   - list of registered users
-  - example: open url in browser
+- Example: open url in browser
 
 * POST  https://vertexhacks.aanandagiri.repl.co
-* <localhost> POST  http://localhost:3000
+* (localhost) POST  http://localhost:3000
   - params: (username<str>, age<int>, email<str>, phone<str:10>, location<str>, contributions<str>, date<str>, duration<str>)
   - To add new user
-  Example:
-  ```
+- Example:
+  
+
+```
 # <python code> Test create new uesr
 import requests
 data = {'username': 'ritik', 'age': 116, 'email': 'neumon@neumon.neumon', 'phone': '0100000000', 'location': 'DC', 'contributions': 'computer, economics, physics', 'date': '2023/02/16', 'duration': '48 hours'}
@@ -27,18 +29,18 @@ requests.post('https://vertexhacks.aanandagiri.repl.co/', data).text
 ```
 
 * POST https://vertexhacks.aanandagiri.repl.co/sms
-* <localhost> POST http://localhost:3000/sms
+* (localhost) POST http://localhost:3000/sms
   - params: (messsage, to) 
-  - to send sms
-
-```# Example :: <python code> :  /sms endpoint
+  - to send sms<br>
+- Example:
+```<python code> :  /sms endpoint
 import requests
 requests.post('https://vertexhacks.aanandagiri.repl.co/sms', {'to':'9840445934', 'message':'hi'}).text
 
 ```
 
 * POST https://vertexhacks.aanandagiri.repl.co/truncate
-* <Localhost> POST http://localhost:3000/truncate
+* (localhost) POST http://localhost:3000/truncate
   - To truncate the database
 ```# Example :: <python code> : /truncate endpoint
 import requests
