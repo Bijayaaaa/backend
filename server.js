@@ -28,7 +28,7 @@ app.get('/', cors(), function(req, res) {
 
 app.post('/', cors(), function(req, res) {
 //   request = JSON.parse(req.body)
-  console.log(`body: ${req.body}`);
+  // console.log(`body: ${req.body}`);
   console.log(`received username:  ${req.body.username}`)
   // console.log(`received data.username:  ${req.body.data.username}`)
   let body = req.body;
@@ -78,9 +78,9 @@ app.post('/truncate', cors(), function(req, res) {
       res.send({'message':`messege sent!`});
     });
 /*
-// <python code> : Test /sms endpoint
+# <python code> : Test /sms endpoint
 import requests
-requests.post('http://localhost:3000/sms', {'to':'9840445934', 'message':'hi'}).text
+requests.post('https://vertexhacks.aanandagiri.repl.co/sms', {'to':'9840445934', 'message':'hi'}).text
 
 
 */
